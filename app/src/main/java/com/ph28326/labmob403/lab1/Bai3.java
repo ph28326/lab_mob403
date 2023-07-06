@@ -1,4 +1,4 @@
-package com.ph28326.labmob403;
+package com.ph28326.labmob403.lab1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ph28326.labmob403.R;
+
 import java.io.IOException;
 import java.net.URL;
 
 public class Bai3 extends AppCompatActivity {
     private ImageView img;
-    private Button btnGetImg;
     private ProgressDialog progressDialog;
     private final String link = "https://picsum.photos/400/400";
 
@@ -26,7 +27,7 @@ public class Bai3 extends AppCompatActivity {
         setContentView(R.layout.activity_bai3);
 
         img = (ImageView) findViewById(R.id.img);
-        btnGetImg = (Button) findViewById(R.id.btn_getImg);
+        Button btnGetImg = (Button) findViewById(R.id.btnGetImg);
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Bài 3");
         progressDialog.setMessage("Loading ...");
@@ -70,4 +71,6 @@ public class Bai3 extends AppCompatActivity {
             asyncTask.execute(link);
         });
     }
+
+
 }
