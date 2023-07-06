@@ -1,4 +1,4 @@
-package com.ph28326.labmob403;
+package com.ph28326.labmob403.lab1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ph28326.labmob403.R;
+
 public class Bai4 extends AppCompatActivity {
     private EditText edTime;
-    private Button btnRun;
     private ProgressDialog progressDialog;
 
     @Override
@@ -20,7 +21,7 @@ public class Bai4 extends AppCompatActivity {
         setContentView(R.layout.activity_bai4);
 
         edTime = (EditText) findViewById(R.id.edTime);
-        btnRun = (Button) findViewById(R.id.btnRun);
+        Button btnRun = (Button) findViewById(R.id.btnRun);
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Bài 4");
         progressDialog.setProgressStyle(androidx.appcompat.R.style.Base_Widget_AppCompat_ProgressBar_Horizontal);
