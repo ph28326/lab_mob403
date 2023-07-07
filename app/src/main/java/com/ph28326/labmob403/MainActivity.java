@@ -51,16 +51,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-
-            Bundle bundle = msg.getData();
-            Bitmap bitmap = bundle.getParcelable("bitmap");
-            if (bitmap != null) {
-                imgBanner.setImageBitmap(bitmap);
-            }
-        }
-    };
-
 }

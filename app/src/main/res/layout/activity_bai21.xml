@@ -6,36 +6,39 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".lab2.MainLab2Activity">
+    tools:context=".lab2.Bai2_1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LAB2 MOB403"
-        android:textSize="45sp"
+        android:text="Learn HTTP using GET"
+        android:textSize="24dp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnBai1"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bai 1" />
+        android:hint="Name:"
+        android:text="toan" />
+
+    <EditText
+        android:id="@+id/edScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Score:"
+        android:text="100" />
 
     <Button
-        android:id="@+id/btnBai2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bai 2" />
+        android:text="Send" />
 
-    <Button
-        android:id="@+id/btnBai3"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bai 3" />
-
-    <Button
-        android:id="@+id/btnBai4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bai 4" />
+        android:text="Result"
+        android:textSize="16dp" />
 </LinearLayout>
