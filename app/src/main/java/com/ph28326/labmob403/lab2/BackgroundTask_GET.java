@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class BackgroundTask_GET extends AsyncTask<String, Integer, String> {
+public class BackgroundTask_GET extends AsyncTask<Void, Void, Void> {
     String duongdan = Bai2_1.SERVER_NAME;
     TextView txtResult;
     String strName, strScore;
@@ -24,32 +24,10 @@ public class BackgroundTask_GET extends AsyncTask<String, Integer, String> {
         this.txtResult = txtResult;
         this.strName = strName;
         this.strScore = strScore;
-        this.context = (Context) context;
+        this.context = context;
     }
 
     @Override
-    protected String doInBackground(String... strings) {
-        duongdan += "?name=" + this.strName + "?score=" + this.strScore;
-
-        try {
-            URL url = new URL(strings[0]);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String line = "";
-            StringBuffer stringBuffer = new StringBuffer();
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuffer.append(line);
-            }
-            bufferedReader.close();
-            str = stringBuffer.toString();
-            urlConnection.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     protected void onPreExecute() {
         super.onPreExecute();
         progressDialog = new ProgressDialog(context);
@@ -59,14 +37,37 @@ public class BackgroundTask_GET extends AsyncTask<String, Integer, String> {
         progressDialog.show();
     }
 
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
+    @Override
+    protected Void doInBackground(Void... voids) {
+        duongdan += "?name=" + this.strName + "&score=" + this.strScore;
+        try {
+            URL url = new URL(duongdan);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            BufferedReader bfr = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            String line = "";
+            StringBuffer sb = new StringBuffer();
+            while ((line = bfr.readLine()) != null) {
+                sb.append(line);
+            }
+            str = sb.toString();
+            Log.d("BackgroundTask_GET1", "Value of str: " + str);
+            urlConnection.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void unused) {
+        super.onPostExecute(unused);
         if (progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
-        txtResult.setText(str);
-        Log.d("result1123", "result: "+ str);
 
+        txtResult.setText(str);
+        Log.d("BackgroundTask_GET", "Value of str: " + str);
     }
+
 
 }

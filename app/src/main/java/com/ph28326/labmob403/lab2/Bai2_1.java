@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ph28326.labmob403.R;
+import com.ph28326.labmob403.lab1.Bai1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,14 +22,12 @@ import java.net.URL;
 
 public class Bai2_1 extends AppCompatActivity {
 
-    public static final String SERVER_NAME = "http://localhost/taquangkhanhtoan_ph28326/student_get.php";
+    public static final String SERVER_NAME = "http://localhost/taquangkhanhtoan_ph28326/student_GET.php";
 
     EditText edName, edScore;
     Button btnSend;
     TextView txtResult;
     String strName, strScore;
-    ProgressDialog progressDialog;
-    AsyncTask<String, Integer, String> asyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,64 +42,17 @@ public class Bai2_1 extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (view.getId() == R.id.btnSend) {
+                    strName = edName.getText().toString();
+                    strScore = edScore.getText().toString();
 
-                strName = edName.getText().toString();
-                strScore = edScore.getText().toString();
-                String query = "?name=" + strName + "?score=" + strScore;
-                asyncTask = new AsyncTask<String, Integer, String>() {
-                    @Override
-                    protected String doInBackground(String... strings) {
-                        String line;
-                        StringBuffer buffer = null;
-                        try {
-                            URL url = new URL(strings[0]);
-                            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                            int responseCode = connection.getResponseCode();
-                            if (responseCode == connection.HTTP_OK) {
-                                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                                buffer = new StringBuffer();
-                                while ((line = reader.readLine()) != null) {
-                                    buffer.append(line);
-                                }
-                                reader.close();
-                                connection.disconnect();
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        return buffer.toString();
-                    }
-
-                    @Override
-                    protected void onPreExecute() {
-                        super.onPreExecute();
-                        progressDialog = new ProgressDialog(Bai2_1.this);
-                        progressDialog.setMessage("Sending...");
-                        progressDialog.setIndeterminate(false);
-                        progressDialog.setCancelable(false);
-                        progressDialog.show();
-                    }
-
-                    @Override
-                    protected void onPostExecute(String s) {
-                        super.onPostExecute(s);
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                        txtResult.setText(s);
-                        Log.d("result1123", "result: " + s);
-                    }
-                    @Override
-                    protected void onProgressUpdate(Integer... values) {
-                        super.onProgressUpdate(values);
-                    }
-                };
-                asyncTask.execute(SERVER_NAME + query);
+                    BackgroundTask_GET backgroundTask = new BackgroundTask_GET(txtResult, strName, strScore, Bai2_1.this);
+                    backgroundTask.execute();
+                    Log.d("Bai1", "Value of name: " + strName);
+                    Log.d("Bai1", "Value of score: " + strScore);
+                }
             }
         });
     }
-
 
 }

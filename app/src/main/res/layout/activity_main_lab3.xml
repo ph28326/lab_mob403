@@ -6,30 +6,41 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".lab3.MainLab3Activity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="LAB3 MOB403"
         android:textSize="45sp"
-        android:textStyle="bold"
-        android:text="LAB MOB403" />
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnLab1"
+        android:id="@+id/btnBai1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LAB 1"/>
-    <Button
-        android:id="@+id/btnLab2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lab 2"/>
+        android:text="Bai 1c1" />
 
     <Button
-        android:id="@+id/btnLab3"
+        android:id="@+id/btnBai1c2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lab 3"/>
+        android:text="Bai 1c2" />
 
+    <Button
+        android:id="@+id/btnBai2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bai 2" />
+
+    <Button
+        android:id="@+id/btnBai3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bai 3" />
+
+    <Button
+        android:id="@+id/btnBai4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bai 4" />
 </LinearLayout>
