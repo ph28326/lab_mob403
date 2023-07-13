@@ -4,41 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
     tools:context=".lab2.Bai2_1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Learn HTTP using GET"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
+        android:text="Learn HTTP Using GET"
+        android:textSize="20sp"/>
     <EditText
-        android:id="@+id/edName"
+        android:id="@+id/ed_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name:"
-        android:text="toan" />
-
+        android:hint="Name: "/>
     <EditText
-        android:id="@+id/edScore"
+        android:id="@+id/ed_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Score:"
-        android:text="100" />
-
+        android:hint="Score: "/>
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btn_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send" />
-
+        android:text="Send"/>
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"/>
     <TextView
-        android:id="@+id/txtResult"
+        android:id="@+id/tv_result"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Result"
-        android:textSize="16sp" />
+        android:textSize="20sp"
+        android:text="Result"/>
+
+
 </LinearLayout>

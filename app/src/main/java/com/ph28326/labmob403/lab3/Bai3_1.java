@@ -66,7 +66,7 @@ public class Bai3_1 extends AppCompatActivity {
                 List<Album> albums = new ArrayList<>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    int id = jsonObject.getInt("id");
+                    int id = jsonObject.getInt("albumId");
                     String title = jsonObject.getString("title");
                     String urll = jsonObject.getString("thumbnailUrl");
                     albums.add(new Album(id, title, urll));

@@ -3,12 +3,14 @@ package com.ph28326.labmob403.lab2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ph28326.labmob403.R;
+import com.ph28326.labmob403.lab1.Bai2;
 
 import java.io.IOException;
 
@@ -18,50 +20,37 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Bai2_2 extends AppCompatActivity {
+public class Bai2_2 extends AppCompatActivity implements View.OnClickListener {
+    public static final String SERVER_NAME1 = "http://192.168.1.254:80/taquangkhanhtoan_ph28326/rectangle_POST.php";
+    private EditText edWidth;
+    private EditText edLength;
+    private Button btnSend;
+    private Button btnBack;
     private TextView tvResult;
+    String strWidth,strlength;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bai22);
 
-        tvResult = findViewById(R.id.tv_result);
+        edWidth = (EditText) findViewById(R.id.ed_width);
+        edLength = (EditText) findViewById(R.id.ed_length);
+        btnSend = (Button) findViewById(R.id.btn_send);
+        btnBack = (Button) findViewById(R.id.btn_back);
+        tvResult = (TextView) findViewById(R.id.tv_result);
+        btnSend.setOnClickListener(this);
+    }
 
-        // Lấy dữ liệu từ bàn phím
-        EditText etWidth = findViewById(R.id.et_width);
-        EditText etHeight = findViewById(R.id.et_height);
-        int width = Integer.parseInt(etWidth.getText().toString());
-        int height = Integer.parseInt(etHeight.getText().toString());
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.btn_send){
+            strWidth = edWidth.getText().toString();
+            strlength = edLength.getText().toString();
 
-        Button btnSend = findViewById(R.id.btnSend);
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Tạo một kết nối HTTP POST đến server
-                OkHttpClient client = new OkHttpClient();
-                String url = "http://localhost/chuvi.php/";
-                RequestBody requestBody = new FormBody.Builder()
-                        .add("width", String.valueOf(width))
-                        .add("height", String.valueOf(height))
-                        .build();
-                Request request = new Request.Builder()
-                        .url(url)
-                        .post(requestBody)
-                        .build();
-
-                // Gửi yêu cầu đến server và nhận kết quả trả về
-                try {
-                    Response response = client.newCall(request).execute();
-                    String result = response.body().string();
-
-                    // Hiển thị kết quả trên textview
-                    tvResult.setText(result);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
+            BackgroundTask_POST backgroundTask_post = new BackgroundTask_POST(tvResult,strWidth,strlength, Bai2_2.this);
+            backgroundTask_post.execute();
+            Log.d("Bai2", "Value of Width: " + strWidth);
+            Log.d("Bai2", "Value of Length: " + strlength);
+        }
     }
 }

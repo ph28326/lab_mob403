@@ -7,23 +7,18 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="20dp"
-    tools:context=".lab2.Bai2_2">
+    tools:context=".lab2.Bai2_3">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Learn HTTP Using POST"
+        android:text="THE TICH LAP PHUONG"
         android:textSize="20sp"/>
     <EditText
-        android:id="@+id/ed_width"
+        android:id="@+id/ed_canh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="width: "/>
-    <EditText
-        android:id="@+id/ed_length"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Length: "/>
+        android:hint="canh: "/>
     <Button
         android:id="@+id/btn_send"
         android:layout_width="match_parent"
